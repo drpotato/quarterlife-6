@@ -56,4 +56,10 @@ public class PlayerScript : MonoBehaviour {
 		transform.eulerAngles = corrected;
 		
 	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.tag == "Cube") {
+			other.gameObject.SetActive (false);
+		}
+	}
 }
