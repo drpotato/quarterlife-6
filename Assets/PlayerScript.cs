@@ -27,9 +27,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		mainCamera.transform.position = transform.position;
-		mainCamera.transform.rotation = transform.rotation;
-		
+			
 //		light.transform.position = transform.position;
 		
 		if (Input.GetKey (KeyCode.W)) {
