@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour {
 		rigid = gameObject.GetComponent<Rigidbody> ();
 		balanced = new Quaternion();
 		balanced.eulerAngles = transform.up;
+		rigid.angularDrag = 5;
 	}
 	
 	void Update() {
@@ -32,11 +33,11 @@ public class PlayerScript : MonoBehaviour {
 		
 		if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) {
 			// rigid.AddForce (-rigid.transform.forward * acceleration);
-			rigid.AddRelativeTorque (new Vector3 (1.0f, 0.0f, 0.0f));
+			rigid.AddRelativeTorque (new Vector3 (2.0f, 0.0f, 0.0f));
 		}
 		if (Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.DownArrow)) {
 			// rigid.AddForce (rigid.transform.forward * acceleration);
-			rigid.AddRelativeTorque (new Vector3 (-1.0f, 0.0f, 0.0f));
+			rigid.AddRelativeTorque (new Vector3 (-2.0f, 0.0f, 0.0f));
 		}
 		if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow)) {
 			rigid.AddRelativeTorque (new Vector3 (0.0f, -7.0f, 0.0f));
@@ -64,6 +65,8 @@ public class PlayerScript : MonoBehaviour {
 		
 		Vector3 torqueVector = Vector3.Cross(predictedUp, Vector3.up);
 		rigidbody.AddTorque(torqueVector * correctionSpeed * correctionSpeed);
+
+
 
 //		(balanced.x, balanced.y, balanced.z, balanced.w);
 	}
