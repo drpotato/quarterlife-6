@@ -30,19 +30,19 @@ public class PlayerScript : MonoBehaviour {
 	void FixedUpdate() {
 //		light.transform.position = transform.position;
 		
-		if (Input.GetKey (KeyCode.W)) {
+		if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) {
 			// rigid.AddForce (-rigid.transform.forward * acceleration);
 			rigid.AddRelativeTorque (new Vector3 (1.0f, 0.0f, 0.0f));
 		}
-		if (Input.GetKey (KeyCode.S)) {
+		if (Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.DownArrow)) {
 			// rigid.AddForce (rigid.transform.forward * acceleration);
 			rigid.AddRelativeTorque (new Vector3 (-1.0f, 0.0f, 0.0f));
 		}
-		if (Input.GetKey (KeyCode.A)) {
+		if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow)) {
 			rigid.AddRelativeTorque (new Vector3 (0.0f, -7.0f, 0.0f));
 			rigid.AddRelativeTorque (new Vector3 (0.0f, 0.0f, 1.0f));
 		}
-		if (Input.GetKey (KeyCode.D)) {
+		if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) {
 			rigid.AddRelativeTorque (new Vector3 (0.0f, 7.0f, 0.0f));
 			rigid.AddRelativeTorque (new Vector3 (0.0f, 0.0f, -1.0f));
 		}
