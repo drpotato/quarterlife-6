@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour {
 
 	public float maxLift = 20.0f;
 
+	public GUIText winText;
+	private int ringCount;
+
 
 	Rigidbody rigid;
 	float lift = 0.0f;
@@ -18,6 +21,8 @@ public class PlayerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigid = gameObject.GetComponent<Rigidbody> ();
+		ringCount = 0;
+		winText.text = "";
 	}
 	
 	void Update() {
@@ -61,17 +66,16 @@ public class PlayerScript : MonoBehaviour {
 		rigidbody.AddTorque(torqueVector * correctionSpeed * correctionSpeed);
 	}
 
-	int count = 0;
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Cube") {
 			other.gameObject.SetActive (false);
 		}
 		if (other.gameObject.tag == "Torus") {
 			other.gameObject.SetActive (false);
-			count++;
+			ringCount++;
 		}
-		if (count >= 2) {
-			Debug.Log("congrats");
+		if (ringCount >= 5) {
+			winText.text = "Such win. Wow";
 		}
 	}
 }
