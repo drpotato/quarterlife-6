@@ -61,9 +61,17 @@ public class PlayerScript : MonoBehaviour {
 		rigidbody.AddTorque(torqueVector * correctionSpeed * correctionSpeed);
 	}
 
+	int count = 0;
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Cube") {
 			other.gameObject.SetActive (false);
+		}
+		if (other.gameObject.tag == "Torus") {
+			other.gameObject.SetActive (false);
+			count++;
+		}
+		if (count >= 2) {
+			Debug.Log("congrats");
 		}
 	}
 }
