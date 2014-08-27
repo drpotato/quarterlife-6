@@ -1957,10 +1957,6 @@ Prefab:
       propertyPath: rotor
       value: 
       objectReference: {fileID: 959582225}
-    - target: {fileID: 11400000, guid: 06474ba30dc09436fbc032d3dfc3de90, type: 2}
-      propertyPath: maxLift
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06474ba30dc09436fbc032d3dfc3de90, type: 2}
   m_RootGameObject: {fileID: 1952765425}
@@ -3228,11 +3224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36dc1b5bc25e46f380d6bb8ba24dacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationCorrection: 1
   rotor: {fileID: 959582225}
   mainCamera: {fileID: 0}
   stability: .300000012
   correctionSpeed: 2
-  maxLift: 40
 --- !u!54 &1952765428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3241,8 +3237,8 @@ Rigidbody:
   m_GameObject: {fileID: 1952765425}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: .600000024
-  m_AngularDrag: 5
+  m_Drag: 0
+  m_AngularDrag: .0399999991
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
