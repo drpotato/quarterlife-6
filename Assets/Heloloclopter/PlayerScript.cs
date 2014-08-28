@@ -4,7 +4,9 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 	public GameObject rotor;
 	public Camera mainCamera;
+    public AudioClip whoosh;
 
+    public float pitch = 1.03f;
 	public float stability = 0.3f;
 	public float correctionSpeed = 2.0f;
 
@@ -64,6 +66,21 @@ public class PlayerScript : MonoBehaviour {
 		
 		Vector3 torqueVector = Vector3.Cross(predictedUp, Vector3.up);
 		rigidbody.AddTorque(torqueVector * correctionSpeed * correctionSpeed);
+
+        if (!audio.isPlaying && lift > .25f)
+        {
+            audio.clip = whoosh;
+            audio.Play();
+        }
+
+        if (/*lift % 0.5f < .05f &&*/ lift > .25f)
+        {
+            audio.pitch = 1 + pitch * (lift / maxLift);
+            audio.volume = .25f * (lift / maxLift);
+            //audio.PlayOneShot(whoosh);
+
+        }
+
 	}
 
 	void OnTriggerEnter(Collider other) {

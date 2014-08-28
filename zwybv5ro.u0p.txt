@@ -1,0 +1,20 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch develop
+# Your branch is behind 'origin/develop' by 4 commits, and can be fast-forwarded.
+#   (use "git pull" to update your local branch)
+#
+# Changes to be committed:
+#	modified:   Assets/Heloloclopter/PlayerScript.cs
+#	modified:   Assets/course.unity
+#
+# Untracked files:
+#	Assets/TerrainScript.cs
+#	Assets/TerrainScript.cs.meta
+#	Assets/bang.wav
+#	Assets/bang.wav.meta
+#	Assets/whoosh.wav
+#	Assets/whoosh.wav.meta
+#
+
