@@ -5,6 +5,6 @@ quarterlife-6
 
 ### Members
  * [Chris Morgan](https://github.com/drpotato) - Game Feels Engineer
- * [Timothy Diack](https://github.com/boots33) - Terrain Manager
+ * [Timothy Diack](https://github.com/boots33) - Creative Lead
  * [Chris Pearce](https://github.com/cjpearce) - Aviator Designer
- * [Jonothan Curtin](https://github.com/denseNinja) - Token Asian Guy
+ * [Jonathan Curtin](https://github.com/denseNinja) - Ring Master
