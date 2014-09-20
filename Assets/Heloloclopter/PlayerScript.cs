@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour {
 	
 	void FixedUpdate() {
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			// rigid.AddForce (-rigid.transform.forward * acceleration);
+			//rigid.AddForce (-rigid.transform.forward * acceleration);
 			rigid.AddRelativeTorque (new Vector3 (2.0f, 0.0f, 0.0f));
 		}
 		if (Input.GetKey (KeyCode.DownArrow)) {
