@@ -40,14 +40,23 @@ public class PlayerScript : MonoBehaviour {
 			rigid.AddRelativeTorque (new Vector3 (-2.0f, 0.0f, 0.0f));
 		}
 		if (Input.GetKey (KeyCode.LeftArrow)) {
-			rigid.AddRelativeTorque (new Vector3 (0.0f, -7.0f, 0.0f));
-			rigid.AddRelativeTorque (new Vector3 (0.0f, 0.0f, 1.0f));
+			//rigid.AddRelativeTorque (new Vector3 (0.0f, -7.0f, 0.0f));
+			rigid.AddRelativeTorque (new Vector3 (0.0f, 0.0f, 1.2f));
 		}
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			rigid.AddRelativeTorque (new Vector3 (0.0f, 7.0f, 0.0f));
-			rigid.AddRelativeTorque (new Vector3 (0.0f, 0.0f, -1.0f));
+			//rigid.AddRelativeTorque (new Vector3 (0.0f, 7.0f, 0.0f));
+			rigid.AddRelativeTorque (new Vector3 (0.0f, 0.0f, -1.2f));
 		}
-
+        if (Input.GetKey(KeyCode.A))
+        {
+            rigid.AddRelativeTorque(new Vector3(0.0f, -7.0f, 0.0f));
+            //rigid.AddRelativeTorque(new Vector3(0.0f, 0.0f, 1.0f));
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rigid.AddRelativeTorque(new Vector3(0.0f, 7.0f, 0.0f));
+            //rigid.AddRelativeTorque(new Vector3(0.0f, 0.0f, -1.0f));
+        }
 		if (Input.GetKey (KeyCode.W)) {
 			lift += 0.05f;
 			if (lift > maxLift) lift = maxLift;
