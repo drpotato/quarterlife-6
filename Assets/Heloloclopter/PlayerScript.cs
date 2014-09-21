@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 	public GameObject rotor;
 	public Camera mainCamera;
+    public Camera fpCamera;
     public AudioClip whoosh;
 
     public float pitch = 1.03f;
@@ -19,12 +20,14 @@ public class PlayerScript : MonoBehaviour {
 	Rigidbody rigid;
 	float lift = 0.0f;
 	float acceleration = 5.0f;
-	
-	// Use this for initialization
+    bool fpsMode = false;
+
+    // Use this for initialization
 	void Start () {
 		rigid = gameObject.GetComponent<Rigidbody> ();
 		ringCount = 0;
 		winText.text = "";
+        fpCamera.enabled = fpsMode;
 	}
 	
 	void Update() {
@@ -64,6 +67,12 @@ public class PlayerScript : MonoBehaviour {
 			lift -= 0.05f;
 			if (lift < 0.0f) lift = 0.0f;
 		}
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            fpsMode = !fpsMode;
+            fpCamera.enabled = fpsMode;
+            mainCamera.enabled = !fpsMode;
+        }
+
 
 		rigid.AddRelativeForce (rigid.transform.up * lift);
 		rotor.transform.Rotate (new Vector3(0.0f, lift, 0.0f));
