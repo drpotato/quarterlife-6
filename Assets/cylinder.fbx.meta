@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: baa29b706ea8e484f8999beedab829aa
+guid: 1ec41a50eba6c4aa08df23e9e11fb685
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Gear
-    100002: //RootNode
-    400000: Gear
-    400002: //RootNode
-    2300000: Gear
-    3300000: Gear
-    4300000: Gear
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder
     9500000: //RootNode
   materials:
     importMaterials: 1
