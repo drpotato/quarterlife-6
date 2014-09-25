@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ConstantRotate : MonoBehaviour {
+public class ConstantRotateUp : MonoBehaviour {
 
 	public float degreesPerSecond = 0.0f;
 	
