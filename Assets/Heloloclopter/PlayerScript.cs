@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour {
 	public Camera mainCamera;
     public Camera fpCamera;
     public AudioClip whoosh;
+	public GameObject bikeController;
+	public CockpitScreen screen;
 
     public float pitch = 1.03f;
 	public float stability = 0.3f;
@@ -13,20 +15,20 @@ public class PlayerScript : MonoBehaviour {
 
 	public float maxLift = 20.0f;
 
-	public GUIText winText;
+
 	private int ringCount;
 
 
 	Rigidbody rigid;
 	float lift = 0.0f;
 	float acceleration = 5.0f;
-    bool fpsMode = false;
+    bool fpsMode = true;
 
     // Use this for initialization
 	void Start () {
 		rigid = gameObject.GetComponent<Rigidbody> ();
 		ringCount = 0;
-		winText.text = "";
+
         fpCamera.enabled = fpsMode;
 	}
 	
@@ -60,22 +62,31 @@ public class PlayerScript : MonoBehaviour {
             rigid.AddRelativeTorque(new Vector3(0.0f, 7.0f, 0.0f));
             //rigid.AddRelativeTorque(new Vector3(0.0f, 0.0f, -1.0f));
         }
-		if (Input.GetKey (KeyCode.W)) {
-			lift += 0.05f;
-			if (lift > maxLift) lift = maxLift;
-		} else if (Input.GetKey (KeyCode.S)) {
-			lift -= 0.05f;
-			if (lift < 0.0f) lift = 0.0f;
+		//*******************************//
+
+		if(bikeController.GetComponent<BikeController>().bikePresent){
+			lift = bikeController.GetComponent<BikeController>().speed*20;
+			if (lift > 0.0f) screen.StartTimer ();
+
+		} else {
+			if (Input.GetKey (KeyCode.W)) {
+				lift += 0.05f;
+				if (lift > maxLift) lift = maxLift;
+			} else if (Input.GetKey (KeyCode.S)) {
+				lift -= 0.05f;
+				if (lift < 0.0f) lift = 0.0f;
+			}
+	        if (Input.GetKeyDown(KeyCode.Tab)) {
+	            fpsMode = !fpsMode;
+	            fpCamera.enabled = fpsMode;
+	            mainCamera.enabled = !fpsMode;
+	        }
 		}
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            fpsMode = !fpsMode;
-            fpCamera.enabled = fpsMode;
-            mainCamera.enabled = !fpsMode;
-        }
-
-
+		//********************************//
 		rigid.AddRelativeForce (rigid.transform.up * lift);
 		rotor.transform.Rotate (new Vector3(0.0f, lift, 0.0f));
+		screen.SetSpeed (lift);
+
 
 		Vector3 predictedUp = Quaternion.AngleAxis(
 			rigidbody.angularVelocity.magnitude * Mathf.Rad2Deg * stability / correctionSpeed,
@@ -108,9 +119,6 @@ public class PlayerScript : MonoBehaviour {
 		if (other.gameObject.tag == "Torus") {
 			other.gameObject.SetActive (false);
 			ringCount++;
-		}
-		if (ringCount >= 5) {
-			winText.text = "Such win. Wow";
 		}
 	}
 }
