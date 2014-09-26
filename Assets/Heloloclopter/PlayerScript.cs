@@ -66,7 +66,7 @@ public class PlayerScript : MonoBehaviour {
 
 		if(bikeController.GetComponent<BikeController>().bikePresent){
 			lift = bikeController.GetComponent<BikeController>().speed*20;
-			if (lift > 0.0f) screen.StartTimer ();
+			
 
 		} else {
 			if (Input.GetKey (KeyCode.W)) {
@@ -82,6 +82,7 @@ public class PlayerScript : MonoBehaviour {
 	            mainCamera.enabled = !fpsMode;
 	        }
 		}
+        if (lift > 0.0f) screen.StartTimer();
 		//********************************//
 		rigid.AddRelativeForce (rigid.transform.up * lift);
 		rotor.transform.Rotate (new Vector3(0.0f, lift, 0.0f));
