@@ -2,6 +2,8 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
 
 \title{Working Title}
 
@@ -19,6 +21,8 @@ We propose to develop an exergame system that is not grounded in reality, while 
 
 To evaluate the exergame we developed, user testing was carried out and compared with other means of physical exercise. This was done through both exergames and real world activity. The exergame proved to be effective at providing them with an enjoyable videogame that incorporates physical activity. It also increased their desire to exercise outside of the study. Additional observations show that exergames less attached to reality, while still being recognisable as exercise, were more enjoyable and motivating than games with closer ties to reality.
 \end{abstract}
+
+\clearpage
 
 \section{Introduction}
 \begin{multicols}{2}
@@ -58,6 +62,56 @@ In more closely related works, extensive research has been done into what makes 
 While the current research has explored competitive motivations in exergaming, there has not been any study done into the motivation of live competition vs. a highscore ghost.
 
 \end{multicols}
+
+\clearpage
+
+\section{Design}
+\begin{multicols}{2}
+
+To determine if players enjoy exergames where exercise is not the focus of the game, it is necessary to find a game mechanic that is easy to associate with some form of exercise without the exercise being the sole focus of the mechanic. In Working Title, for example, the mechanic of cycling is used to provide rotational motion to a helicopters blades. While cycling is translatable to powering a helicopter, it is so devoid of reality that the focus of the game is piloting the helicopter and the cycling is simply a means to fly.
+
+By adding cognitive tasks to the course, it is possible to determine increases in motivation in players. Initially, they navigate the course without the cognitive exercises and they are added in after a few run throughs.
+
+\subsection{Contributions}
+
+Working Title is a game that involves navigating a helicopter though a pre-designed course. Throughout the course, there are cognitive exercises to force the user to think logically whilst exercising. While the main goal of the game is to complete the course, there are penalties for failing to complete the tasks along the way.
+
+Cognitive tasks included in the course can be as complicated or as simple as required for the audience. To increase players motivation the tasks need to provide mental stimulus without becoming tiresome.
+
+Some examples for such activities are as follows:
+\begin{itemize}
+	\item Fly through a specifically coloured ring.
+	\item Solve basic arithmetic questions.
+	\item Complete an arbitrary pattern sequence.
+	\item Shoot specific targets from a set.
+\end{itemize}
+
+\end{multicols}
+
+\section{Implementation}
+\begin{multicols}{2}
+
+Working Title was implemented using the Unity3D game engine. Creating a game from scratch is a huge undertaking especially when complex external elements are involved, such as interacting with an exercycle, an Occulus Rift and joystick. Unity3D provides a strong game engine and a scripting system to allow for rapid development of prototypes. It also has modules to interact with the Occulus Rift, making that integration much simpler.
+
+\end{multicols}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{diagram-1.png}
+\caption{Control scheme for Working Title}
+\end{figure}
+\begin{multicols}{2}
+
+To control the helicopter, the player utilities a joystick. This mimics the real world design of how helicopters are controlled. Normally, piloting a helicopter is a complicated activity but the implementation includes stabilisation to help players handle flying. 
+
+The exercise component of the game comes in the form of using a recumbent cycle to control the amount of power applied to the helicopter rotors. This is not only an effective source of physical exertion for the player, but also an idea means to finely control speed and altitude of the helicopter.
+
+An immersive experience is provided having the Occulus Rift as the view window into the game. Players can look around the helicopter cockpit as if they were actually inside it. The Occulus Rift also helps the player have a sense of spatial awareness and helps them judge distances more effectively.
+
+
+
+\end{multicols}
+
+\clearpage
 
 \bibliographystyle{ieeetr}
 \small
