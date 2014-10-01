@@ -95,7 +95,7 @@ public class PlayerScript : MonoBehaviour {
 			) * transform.up;
 		
 		Vector3 torqueVector = Vector3.Cross(predictedUp, Vector3.up);
-		rigidbody.AddTorque(torqueVector * correctionSpeed * correctionSpeed);
+		//rigidbody.AddTorque(torqueVector * correctionSpeed * correctionSpeed);
 
         if (!audio.isPlaying && lift > .25f)
         {
