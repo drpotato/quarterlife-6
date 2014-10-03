@@ -41,6 +41,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+*.app
 
 ### Unity ###
 [Ll]ibrary/
