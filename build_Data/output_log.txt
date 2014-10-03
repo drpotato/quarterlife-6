@@ -1,0 +1,37 @@
+Initialize engine version: 4.5.2f1 (9abb1b59b47c)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics (ID=0x156)
+    Vendor:   Intel
+    VRAM:     32 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+- Completed reload, in  0.104 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1280x768 59Hz; virtual: 1280x768 at 0,0
+Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\System.dll (this message is harmless)
+System.IO.IOException: The port `COM4' does not exist.
+  at System.IO.Ports.WinSerialStream.ReportIOError (System.String optional_arg) [0x00000] in <filename unknown>:0 
+  at System.IO.Ports.WinSerialStream..ctor (System.String port_name, Int32 baud_rate, Int32 data_bits, Parity parity, StopBits sb, Boolean dtr_enable, Boolean rts_enable, Handshake hs, Int32 read_timeout, Int32 write_timeout, Int32 read_buffer_size, Int32 write_buffer_size) [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.Ports.WinSerialStream:.ctor (string,int,int,System.IO.Ports.Parity,System.IO.Ports.StopBits,bool,bool,System.IO.Ports.Handshake,int,int,int,int)
+  at System.IO.Ports.SerialPort.Open () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.Ports.SerialPort:Open ()
+  at BikeController.SideThreadStart () [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Closing Port
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Port Closed
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+

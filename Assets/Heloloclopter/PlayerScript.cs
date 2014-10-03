@@ -12,6 +12,9 @@ public class PlayerScript : MonoBehaviour {
     public float pitch = 1.03f;
 	public float stability = 0.3f;
 	public float correctionSpeed = 2.0f;
+    public float yaw = 140.0f;
+    public float pitchH = 40.0f;
+    public float roll = 40.0f;
 
 	public float maxLift = 50.0f;
 
@@ -36,13 +39,13 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		Vector3 pitchChange = new Vector3 (40.0f, 0.0f, 0.0f);
+		Vector3 pitchChange = new Vector3 (pitchH, 0.0f, 0.0f);
 		rigid.AddRelativeTorque (pitchChange*Input.GetAxis("Pitch"));
 
-		Vector3 rollChange = new Vector3 (0.0f, 0.0f, 40.0f);
+		Vector3 rollChange = new Vector3 (0.0f, 0.0f, roll);
 		rigid.AddRelativeTorque (rollChange*Input.GetAxis("Roll"));
 
-		Vector3 yawChange = new Vector3 (0.0f, 140.0f, 0.0f);
+		Vector3 yawChange = new Vector3 (0.0f, yaw, 0.0f);
 		rigid.AddRelativeTorque (yawChange*Input.GetAxis("Yaw"));
 
 		//*******************************//
