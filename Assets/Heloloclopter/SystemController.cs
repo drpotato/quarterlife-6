@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+/*
 public class SystemController : MonoBehaviour {
 	public TextMesh timeText;
 	public TextMesh altimeter;
@@ -41,7 +42,7 @@ public class SystemController : MonoBehaviour {
 
 		Random rand = new Random();
 		for (int i = 0; i < maxLength; i++) {
-			sequence.Add (rand.Next(0, 4));
+			sequence.Add (rand.next(0, 4));
 		}
 	}
 	
@@ -146,3 +147,4 @@ public class SystemController : MonoBehaviour {
 		}
 	}
 }
+*/
