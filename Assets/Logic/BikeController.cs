@@ -18,8 +18,8 @@ public class BikeController : MonoBehaviour {
 	
 	//This variable exists to allow for the enabling and disabling of the bike via the editor
 	public bool enableBike = true;
-	public bool bikePresent = false;
-	public string portName = "COM4";
+	public bool bikePresent = true;
+	public string portName = "COM3";
 	public bool ending = false;					//This is used as a primary signal as part of the shutdown process to make sure that
 	//the port is properly closed when the user stops playing. When the user gets a game over, this gets
 	//set to true. The thread that manages the bike will periodically check this value, and shut down if it is set to true
@@ -75,7 +75,7 @@ public class BikeController : MonoBehaviour {
 
 		} catch (IOException e) {
 			Debug.Log (e.ToString());
-			bikePresent = false;
+			//bikePresent = false;
 		} finally {
 			//When the thread finishes, we close the port
 			Debug.Log("Closing Port");

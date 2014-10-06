@@ -39,13 +39,13 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		Vector3 pitchChange = new Vector3 (pitchH, 0.0f, 0.0f);
+		Vector3 pitchChange = new Vector3 (pitchH*lift/maxLift, 0.0f, 0.0f);
 		rigid.AddRelativeTorque (pitchChange*Input.GetAxis("Pitch"));
 
-		Vector3 rollChange = new Vector3 (0.0f, 0.0f, roll);
+		Vector3 rollChange = new Vector3 (0.0f, 0.0f, roll*lift/maxLift);
 		rigid.AddRelativeTorque (rollChange*Input.GetAxis("Roll"));
 
-		Vector3 yawChange = new Vector3 (0.0f, yaw, 0.0f);
+		Vector3 yawChange = new Vector3 (0.0f, yaw*lift/maxLift, 0.0f);
 		rigid.AddRelativeTorque (yawChange*Input.GetAxis("Yaw"));
 
 		//*******************************//
