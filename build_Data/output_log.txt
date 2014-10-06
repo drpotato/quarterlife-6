@@ -12,11 +12,16 @@ Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Ma
 Loading C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
 Loading C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-- Completed reload, in  0.104 seconds
+- Completed reload, in  0.599 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1280x768 59Hz; virtual: 1280x768 at 0,0
 Platform assembly: C:\Users\Timothy\Documents\GitHub\quarterlife-6\build_Data\Managed\System.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1783)
+
 System.IO.IOException: The port `COM4' does not exist.
   at System.IO.Ports.WinSerialStream.ReportIOError (System.String optional_arg) [0x00000] in <filename unknown>:0 
   at System.IO.Ports.WinSerialStream..ctor (System.String port_name, Int32 baud_rate, Int32 data_bits, Parity parity, StopBits sb, Boolean dtr_enable, Boolean rts_enable, Handshake hs, Int32 read_timeout, Int32 write_timeout, Int32 read_buffer_size, Int32 write_buffer_size) [0x00000] in <filename unknown>:0 
