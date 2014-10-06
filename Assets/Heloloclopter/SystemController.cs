@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-/*
+
 public class SystemController : MonoBehaviour {
 	public TextMesh timeText;
 	public TextMesh altimeter;
@@ -10,6 +10,8 @@ public class SystemController : MonoBehaviour {
 	public bool timeEnabled;
 	public bool altimeterEnabled;
 	public bool speedEnabled;
+    public bool displayingSequence;
+    
 
 	float timer = 0.0f;
 	float speed = 0.0f;
@@ -33,16 +35,19 @@ public class SystemController : MonoBehaviour {
 	int score;
 	int incorrectAnswers;
 	int maxLength = 20;
-
+    int checkpointOffset;
+    int sequencePosition;
+    int numCheckpoints;
+    int currentCheckpoint;
 
 	// Use this for initialization
 	void Start () {
 		sequenceLength = 1;
 		nextCheckpoint = 0;
 
-		Random rand = new Random();
+		System.Random rand = new System.Random();
 		for (int i = 0; i < maxLength; i++) {
-			sequence.Add (rand.next(0, 4));
+			sequence.Add (rand.Next(0, 4));
 		}
 	}
 	
@@ -68,8 +73,9 @@ public class SystemController : MonoBehaviour {
 	// Checkpoints
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Ring") {
-			if ( CurrentCheckpoint () == other.gameObject.checkpointNumber) {
-				if (sequence[sequencePosition] == other.gameObject.ringNumber) {
+
+			if ( CurrentCheckpoint () == other.gameObject.GetComponent<Ring>().checkpointNumber) {
+				if (sequence[sequencePosition] == other.gameObject.GetComponent<Ring>().ringNumber) {
 					// Correct Answer
 					score += sequencePosition;
 					sequencePosition++;
@@ -102,7 +108,7 @@ public class SystemController : MonoBehaviour {
 			currentRingTimer = 0.0f;
 		}
 
-		sequenceText.text = "" + sequence[ringDisplayIndex];
+		//sequenceText.text = "" + sequence[ringDisplayIndex];
 	}
 
 	void DisplayTime () {
@@ -147,4 +153,3 @@ public class SystemController : MonoBehaviour {
 		}
 	}
 }
-*/
