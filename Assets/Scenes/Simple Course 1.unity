@@ -6233,6 +6233,7 @@ GameObject:
   - 114: {fileID: 1676374593}
   - 82: {fileID: 1676374592}
   - 114: {fileID: 1676374591}
+  - 114: {fileID: 1676374595}
   m_Layer: 0
   m_Name: Heloloblockter
   m_TagString: Untagged
@@ -6368,6 +6369,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1676374595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676374589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668bf7cf38587624994b692dbc67ccd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 0}
+  altimeter: {fileID: 0}
+  speedText: {fileID: 0}
+  timeEnabled: 0
+  altimeterEnabled: 0
+  speedEnabled: 0
+  displayingSequence: 0
 --- !u!1 &1696043877
 GameObject:
   m_ObjectHideFlags: 0
@@ -11299,7 +11318,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1947224207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95bf607fb76da9f41a364ff1a8296cd6, type: 3}
   m_Name: 
@@ -11592,7 +11611,7 @@ MonoBehaviour:
   status: -1
   enableBike: 1
   bikePresent: 0
-  portName: COM4
+  portName: COM3
   ending: 0
 --- !u!4 &2037710399
 Transform:
