@@ -6,6 +6,7 @@ public class SystemController : MonoBehaviour {
 	public TextMesh timeText;
 	public TextMesh altimeter;
 	public TextMesh speedText;
+    public TextMesh sequenceText;
 
 	public bool timeEnabled;
 	public bool altimeterEnabled;
@@ -35,20 +36,18 @@ public class SystemController : MonoBehaviour {
 	int score;
 	int incorrectAnswers;
 	int maxLength = 20;
-    int checkpointOffset;
-    int sequencePosition;
-    int numCheckpoints;
-    int currentCheckpoint;
+    int checkpointOffset = 0;
+    int sequencePosition = 0;
+    int numCheckpoints = 37;
+    int currentCheckpoint = 0;
 
 	// Use this for initialization
 	void Start () {
 		sequenceLength = 1;
 		nextCheckpoint = 0;
-
-		System.Random rand = new System.Random();
-		for (int i = 0; i < maxLength; i++) {
-			sequence.Add (rand.Next(0, 4));
-		}
+        ShuffleList ();
+		
+		
 	}
 	
 	// Update is called once per frame
@@ -66,6 +65,14 @@ public class SystemController : MonoBehaviour {
 		}
 	}
 
+    void ShuffleList () {
+        sequence.Clear();
+        System.Random rand = new System.Random ();
+        for (int i = 0; i < maxLength; i++) {
+            sequence.Add(rand.Next (0, 4));
+        }
+    } 
+
 	int CurrentCheckpoint () {
 		return (checkpointOffset + sequencePosition)%numCheckpoints;
 	}
@@ -74,28 +81,35 @@ public class SystemController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Ring") {
 
-			if ( CurrentCheckpoint () == other.gameObject.GetComponent<Ring>().checkpointNumber) {
-				if (sequence[sequencePosition] == other.gameObject.GetComponent<Ring>().ringNumber) {
-					// Correct Answer
-					score += sequencePosition;
-					sequencePosition++;
+            if (CurrentCheckpoint () == other.gameObject.GetComponent<Ring>().checkpointNumber) {
+                if (sequence[sequencePosition] == other.gameObject.GetComponent<Ring>().ringNumber) {
+                    // Correct Answer
+                    score += sequencePosition;
+                    sequencePosition++;
 
-					if (sequencePosition == sequenceLength) {
-						sequencePosition = 0;
-						sequenceLength++;
-						displayingSequence = true;
-						ringDisplayIndex = 0;
-					}
-				} else {
-					// Incorrect Answer
-					score--;
+                    if (sequencePosition == sequenceLength) {
+                        sequencePosition = 0;
+                        sequenceLength++;
+                        displayingSequence = true;
+                        ringDisplayIndex = 0;
+                    }
+                }
+                else {
+                    // Incorrect Answer
+                    score--;
 
-					if (currentCheckpoint > 0) {
-						currentCheckpoint = 0;
-					}
-				}
-			// other.gameObject.SetActive (false);
-			}
+                    if (currentCheckpoint > 0) {
+                        currentCheckpoint = 0;
+                    }
+                }
+                other.gameObject.SetActive(false);
+            }
+            else {
+                checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber;
+                ShuffleList();
+                sequencePosition = 0;
+
+            }
 		}
 	}
 
@@ -108,7 +122,7 @@ public class SystemController : MonoBehaviour {
 			currentRingTimer = 0.0f;
 		}
 
-		//sequenceText.text = "" + sequence[ringDisplayIndex];
+		sequenceText.text = "" + sequence[ringDisplayIndex];
 	}
 
 	void DisplayTime () {
@@ -137,7 +151,7 @@ public class SystemController : MonoBehaviour {
 		int numHeightMarkers = (int)(heightProportion * 20);
 		
 		altimeter.text = "";
-		for (int i = 0; i < Mathf.Min(numHeightMarkers, 20); ++i) {
+		for (int i = 0; i < Mathf.Min (numHeightMarkers, 20); ++i) {
 			altimeter.text += " ";
 		}
 		altimeter.text += "I";
