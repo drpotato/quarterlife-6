@@ -6536,11 +6536,7 @@ GameObject:
   - 114: {fileID: 1676374593}
   - 82: {fileID: 1676374592}
   - 114: {fileID: 1676374591}
-<<<<<<< HEAD
-  - 114: {fileID: 1676374595}
-=======
   - 108: {fileID: 1676374595}
->>>>>>> Began prettiness of terrain
   m_Layer: 0
   m_Name: Heloloblockter
   m_TagString: Untagged
@@ -6676,31 +6672,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-<<<<<<< HEAD
---- !u!114 &1676374595
-MonoBehaviour:
-=======
 --- !u!108 &1676374595
 Light:
->>>>>>> Began prettiness of terrain
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1676374589}
   m_Enabled: 1
-<<<<<<< HEAD
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668bf7cf38587624994b692dbc67ccd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeText: {fileID: 0}
-  altimeter: {fileID: 0}
-  speedText: {fileID: 0}
-  timeEnabled: 0
-  altimeterEnabled: 0
-  speedEnabled: 0
-  displayingSequence: 0
-=======
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6729,7 +6707,6 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
->>>>>>> Began prettiness of terrain
 --- !u!1 &1696043877
 GameObject:
   m_ObjectHideFlags: 0
