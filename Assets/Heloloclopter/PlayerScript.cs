@@ -13,8 +13,11 @@ public class PlayerScript : MonoBehaviour {
 	public float stability = 0.3f;
 	public float correctionSpeed = 2.0f;
     public float yaw = 140.0f;
+	public float yawConstant = 0.1f;
     public float pitchH = 40.0f;
+	public float pitchHConstant = 0.1f;
     public float roll = 40.0f;
+	public float rollConstant = 0.1f;
 
 	public float maxLift = 50.0f;
 
@@ -39,13 +42,13 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		Vector3 pitchChange = new Vector3 (pitchH*lift/maxLift, 0.0f, 0.0f);
+		Vector3 pitchChange = new Vector3 ((pitchH*lift + 0.1f)/maxLift, 0.0f, 0.0f);
 		rigid.AddRelativeTorque (pitchChange*Input.GetAxis("Pitch"));
 
-		Vector3 rollChange = new Vector3 (0.0f, 0.0f, roll*lift/maxLift);
+		Vector3 rollChange = new Vector3 (0.0f, 0.0f, (roll*lift + 0.1f)/maxLift);
 		rigid.AddRelativeTorque (rollChange*Input.GetAxis("Roll"));
 
-		Vector3 yawChange = new Vector3 (0.0f, yaw*lift/maxLift, 0.0f);
+		Vector3 yawChange = new Vector3 (0.0f, (yaw*lift + 0.1f)/maxLift, 0.0f);
 		rigid.AddRelativeTorque (yawChange*Input.GetAxis("Yaw"));
 
 		//*******************************//
@@ -72,7 +75,7 @@ public class PlayerScript : MonoBehaviour {
 
 //        if (lift > 0.0f) screen.StartTimer();
 		//********************************//
-		rigid.AddForce (rigid.transform.up * lift);
+		rigid.AddForce (rigid.transform.up * lift * 3.0f);
 		rotor.transform.Rotate (new Vector3(0.0f, lift, 0.0f));
 
 //		screen.SetSpeed (lift);
