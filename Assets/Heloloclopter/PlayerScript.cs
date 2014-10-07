@@ -108,9 +108,6 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "Cube") {
-			other.gameObject.SetActive (false);
-		}
 		if (other.gameObject.tag == "Torus") {
 			other.gameObject.SetActive (false);
 			ringCount++;
