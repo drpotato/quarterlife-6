@@ -53,7 +53,7 @@ public class PlayerScript : MonoBehaviour {
 		if (bikeController.GetComponent<BikeController>().bikePresent) {
 			lift = bikeController.GetComponent<BikeController>().speed*20;
 		} else {
-			lift = ((Input.GetAxis ("Lift") + 1)/2)*maxLift;
+//			lift = ((Input.GetAxis ("Lift") + 1)/2)*maxLift;
 
 			if (Input.GetKey (KeyCode.W)) {
 				lift += 0.05f;
