@@ -14,7 +14,7 @@ SceneSettings:
 RenderSettings:
   m_Fog: 1
   m_FogColor: {r: .91911763, g: .89884299, b: .89884299, a: 1}
-  m_FogMode: 3
+  m_FogMode: 1
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 500
@@ -6654,8 +6654,11 @@ MonoBehaviour:
   stability: .300000012
   correctionSpeed: 2
   yaw: 300
+  yawConstant: .100000001
   pitchH: 240
+  pitchHConstant: .100000001
   roll: 220
+  rollConstant: .100000001
   maxLift: 40
 --- !u!54 &1676374594
 Rigidbody:
