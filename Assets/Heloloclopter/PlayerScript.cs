@@ -73,6 +73,14 @@ public class PlayerScript : MonoBehaviour {
 			mainCamera.enabled = !fpsMode;
 		}
 
+		if (Input.GetKeyDown(KeyCode.R)) {
+			transform.position = transform.position + Vector3.down * 10;
+			Vector3 rotation = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+			rotation.y = 0.0f;
+			transform.rotation = Quaternion.LookRotation(rotation);
+
+		}
+
 //        if (lift > 0.0f) screen.StartTimer();
 		//********************************//
 		rigid.AddForce (rigid.transform.up * lift * 3.0f);
