@@ -39,18 +39,19 @@ public class SystemController : MonoBehaviour {
 	int sequenceLength;
 	int score;
 	int incorrectAnswers;
-	int maxLength = 20;
+	int maxLength = 18;
     int checkpointOffset = 0;
     int sequencePosition = 0;
-    int numCheckpoints = 37;
+    int numCheckpoints = 18;
     int currentCheckpoint = 0;
 
 	// Use this for initialization
 	void Start () {
-        /*yellow.SetActive(false);
+        StartTimer();
+        yellow.SetActive(false);
         green.SetActive(false);
         red.SetActive(false);
-        blue.SetActive(false);*/
+        blue.SetActive(false);
         sequenceLength = 1;
 		nextCheckpoint = 0;
         sequence = new List<int>();
@@ -68,9 +69,9 @@ public class SystemController : MonoBehaviour {
 		if (displayingSequence) {
 			DisplaySequence ();
 		} else {
-			if (timeEnabled) DisplayAltimeter ();
-			if (altimeterEnabled) DisplayAltimeter ();
-			if (speedEnabled) DisplayAltimeter ();
+			//if (timeEnabled) DisplayAltimeter ();
+			//if (altimeterEnabled) DisplayAltimeter ();
+			//if (speedEnabled) DisplayAltimeter ();
 		}
 	}
 
@@ -79,9 +80,11 @@ public class SystemController : MonoBehaviour {
         sequenceLength = 1;
         System.Random rand = new System.Random ();
         for (int i = 0; i < maxLength; i++) {
-            sequence.Add(i % 4);//rand.Next (0, 4));
+            sequence.Add(rand.Next (0, 4));
             
         }
+        ringDisplayIndex = 0;
+        DisplaySequence();
         Debug.Log(sequence[0]);
     } 
 
@@ -100,22 +103,22 @@ public class SystemController : MonoBehaviour {
                     // Correct Answer
                     score += sequencePosition;
                     sequencePosition++;
-                    Debug.Log("Correct");
+                    Debug.Log("Correct " + sequencePosition + " " + other.gameObject.GetComponent<Ring>().checkpointNumber);
                     CurrentCheckpoint();
                     Debug.Log(sequencePosition);
                     if (sequencePosition == sequenceLength) {
                         sequencePosition = 0;
                         sequenceLength++;
-                        checkpointOffset++;
+                        checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber + 1;
                         displayingSequence = true;
                         ringDisplayIndex = 0;
                     }
                 }
                 else {
                     // Incorrect Answer
-                    Debug.Log("Incorrect");
+                    Debug.Log("Incorrect " + checkpointOffset + " " + sequencePosition + " " + other.gameObject.GetComponent<Ring>().checkpointNumber);
                     score--;
-                    checkpointOffset++;
+                    checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber + 1;
                     sequencePosition = 0;
                     ShuffleList();
                     if (currentCheckpoint > 0) {
@@ -126,7 +129,7 @@ public class SystemController : MonoBehaviour {
             }
             else {
                 Debug.Log("Wrong checkpoint " + CurrentCheckpoint () + " " + other.gameObject.GetComponent<Ring>().checkpointNumber );
-                checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber;
+                checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber + 1;
                 ShuffleList();
                 sequencePosition = 0;
 
@@ -142,7 +145,8 @@ public class SystemController : MonoBehaviour {
 			ringDisplayIndex++;
 			currentRingTimer = 0.0f;
 		}
-        if (ringDisplayIndex < sequenceLength && false) { 
+        if (ringDisplayIndex < sequenceLength )//&& timer > 5.0f)
+        { 
             switch (sequence[ringDisplayIndex]){
 
                 case(0):
@@ -171,8 +175,15 @@ public class SystemController : MonoBehaviour {
                     break;
             }
 
-                
+
+        } else {
+            yellow.SetActive(false);
+            green.SetActive(false);
+            red.SetActive(false);
+            blue.SetActive(false);
+
         } //sequenceText.text = "" + sequence[ringDisplayIndex];
+        //if (ringDisplayIndex == 0) ringDisplayIndex = 1;
 	}
 
 	void DisplayTime () {

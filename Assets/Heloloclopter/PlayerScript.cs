@@ -29,7 +29,8 @@ public class PlayerScript : MonoBehaviour {
 	float lift = 0.0f;
 	float acceleration = 5.0f;
     bool fpsMode = true;
-
+    Collider last;
+    bool lastRing = false;
     // Use this for initialization
 	void Start () {
 		rigid = gameObject.GetComponent<Rigidbody> ();
@@ -117,9 +118,16 @@ public class PlayerScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Torus") {
+            if (lastRing) {
+                last.transform.parent.transform.parent.gameObject.SetActive(true);
+                last.gameObject.SetActive(true);
+            } else {
+                lastRing = true;
+            }
 			other.gameObject.SetActive (false);
             Debug.Log(other.transform.parent);
             other.transform.parent.transform.parent.gameObject.SetActive(false);
+            last = other;
 			ringCount++;
 		}
 	}
