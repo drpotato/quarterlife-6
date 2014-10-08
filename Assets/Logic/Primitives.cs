@@ -11,6 +11,10 @@ public class Primitives : MonoBehaviour {
 	public float tubeRadius = 0.1f;
 	public int segments = 32;
 	public int tubes = 12;
+
+    public Vector3[] newVertices;
+    public Vector2[] newUV;
+    public int[] newTriangles;
 	
 	void Start() {
 		Torus();
@@ -107,6 +111,8 @@ public class Primitives : MonoBehaviour {
 		Mesh mesh = new Mesh();
 		
 		Vector3[] vertices = new Vector3[totalVertices];
+        GetComponent<MeshFilter>().mesh = mesh;
+        
 		verticesList.CopyTo(vertices);
 		int[] triangles = new int[totalIndices];
 		indicesList.CopyTo(triangles);
@@ -118,5 +124,13 @@ public class Primitives : MonoBehaviour {
 		mesh.Optimize();
 		MeshFilter mFilter = GetComponent(typeof(MeshFilter)) as MeshFilter;
 		mFilter.mesh = mesh;
+        Vector2[] uvs = new Vector2[vertices.Length];
+        int q = 0;
+        while (q < uvs.Length)
+        {
+            uvs[q] = new Vector2(vertices[q].x, vertices[q].z);
+            q++;
+        }
+        mesh.uv = uvs;
 	}
 }

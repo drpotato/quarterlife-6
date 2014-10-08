@@ -45,8 +45,9 @@ public class SystemController : MonoBehaviour {
 	void Start () {
 		sequenceLength = 1;
 		nextCheckpoint = 0;
+        sequence = new List<int>();
         ShuffleList ();
-		
+        DisplaySequence ();
 		
 	}
 	
@@ -70,32 +71,40 @@ public class SystemController : MonoBehaviour {
         System.Random rand = new System.Random ();
         for (int i = 0; i < maxLength; i++) {
             sequence.Add(rand.Next (0, 4));
+            
         }
+        Debug.Log(sequence[0]);
     } 
 
 	int CurrentCheckpoint () {
+        Debug.Log("FAGGOT: " + (checkpointOffset + sequencePosition) % numCheckpoints + " " + checkpointOffset + " " + sequencePosition + " " + numCheckpoints);
 		return (checkpointOffset + sequencePosition)%numCheckpoints;
 	}
 
 	// Checkpoints
 	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "Ring") {
-
+        Debug.Log("Collision");
+		if (other.gameObject.tag == "Torus") {
+            Debug.Log("Ahh, you need to give me a trigger warning");
             if (CurrentCheckpoint () == other.gameObject.GetComponent<Ring>().checkpointNumber) {
                 if (sequence[sequencePosition] == other.gameObject.GetComponent<Ring>().ringNumber) {
                     // Correct Answer
                     score += sequencePosition;
                     sequencePosition++;
-
+                    Debug.Log("Correct");
+                    CurrentCheckpoint();
+                    Debug.Log(sequencePosition);
                     if (sequencePosition == sequenceLength) {
                         sequencePosition = 0;
                         sequenceLength++;
+                        checkpointOffset++;
                         displayingSequence = true;
                         ringDisplayIndex = 0;
                     }
                 }
                 else {
                     // Incorrect Answer
+                    Debug.Log("Incorrect");
                     score--;
 
                     if (currentCheckpoint > 0) {
@@ -105,6 +114,7 @@ public class SystemController : MonoBehaviour {
                 other.gameObject.SetActive(false);
             }
             else {
+                Debug.Log("Wrong checkpoint" + CurrentCheckpoint () + " " + other.gameObject.GetComponent<Ring>().checkpointNumber );
                 checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber;
                 ShuffleList();
                 sequencePosition = 0;
@@ -121,8 +131,7 @@ public class SystemController : MonoBehaviour {
 			ringDisplayIndex++;
 			currentRingTimer = 0.0f;
 		}
-
-		sequenceText.text = "" + sequence[ringDisplayIndex];
+        if (ringDisplayIndex < sequence.Count) 	sequenceText.text = "" + sequence[ringDisplayIndex];
 	}
 
 	void DisplayTime () {
