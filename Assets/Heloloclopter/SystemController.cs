@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SystemController : MonoBehaviour {
-	public TextMesh timeText;
+	/*public TextMesh timeText;
 	public TextMesh altimeter;
 	public TextMesh speedText;
     public TextMesh sequenceText;
-
+    */
 	public bool timeEnabled;
 	public bool altimeterEnabled;
 	public bool speedEnabled;
@@ -177,9 +177,9 @@ public class SystemController : MonoBehaviour {
 
 	void DisplayTime () {
 		if (isTiming) {
-			timeText.text = timer.ToString ("F3");
+			//timeText.text = timer.ToString ("F3");
 		} else {
-			timeText.text = "Start pedalling\nwhen ready";
+			//timeText.text = "Start pedalling\nwhen ready";
 		}
 	}
 
@@ -187,11 +187,11 @@ public class SystemController : MonoBehaviour {
 		float speedProportion = speed / maxSpeed;
 		int numSpeedMarkers = (int)(speedProportion * 10);
 
-		speedText.text = "";
+		//speedText.text = "";
 		for (int i = 0; i < numSpeedMarkers; ++i) {
-			speedText.text += " ";
+			//speedText.text += " ";
 		}
-		speedText.text += "I";
+		//speedText.text += "I";
 	}
 
 	void DisplayAltimeter () {
@@ -200,11 +200,11 @@ public class SystemController : MonoBehaviour {
 		float heightProportion = height / maxHeight;
 		int numHeightMarkers = (int)(heightProportion * 20);
 		
-		altimeter.text = "";
+		//altimeter.text = "";
 		for (int i = 0; i < Mathf.Min (numHeightMarkers, 20); ++i) {
-			altimeter.text += " ";
+			//altimeter.text += " ";
 		}
-		altimeter.text += "I";
+		//altimeter.text += "I";
 	}
 
 	public void SetSpeed (float speed) {

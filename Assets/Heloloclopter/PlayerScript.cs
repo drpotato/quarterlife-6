@@ -110,6 +110,8 @@ public class PlayerScript : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag == "Torus") {
 			other.gameObject.SetActive (false);
+            Debug.Log(other.transform.parent);
+            other.transform.parent.transform.parent.gameObject.SetActive(false);
 			ringCount++;
 		}
 	}
