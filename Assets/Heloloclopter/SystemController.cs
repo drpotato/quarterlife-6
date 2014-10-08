@@ -47,10 +47,10 @@ public class SystemController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        yellow.SetActive(false);
+        /*yellow.SetActive(false);
         green.SetActive(false);
         red.SetActive(false);
-        blue.SetActive(false);
+        blue.SetActive(false);*/
         sequenceLength = 1;
 		nextCheckpoint = 0;
         sequence = new List<int>();
@@ -142,7 +142,7 @@ public class SystemController : MonoBehaviour {
 			ringDisplayIndex++;
 			currentRingTimer = 0.0f;
 		}
-        if (ringDisplayIndex < sequenceLength) { 
+        if (ringDisplayIndex < sequenceLength && false) { 
             switch (sequence[ringDisplayIndex]){
 
                 case(0):
