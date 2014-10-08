@@ -18,6 +18,12 @@ public class SystemController : MonoBehaviour {
     public GameObject green;
     public GameObject blue;
 
+    public AudioClip C;
+    public AudioClip E;
+    public AudioClip G;
+    public AudioClip C2;
+    public AudioClip Buzz;
+
 	float timer = 0.0f;
 	float speed = 0.0f;
 	float maxSpeed = 40.0f;
@@ -101,6 +107,21 @@ public class SystemController : MonoBehaviour {
             if (CurrentCheckpoint () == other.gameObject.GetComponent<Ring>().checkpointNumber) {
                 if (sequence[sequencePosition] == other.gameObject.GetComponent<Ring>().ringNumber) {
                     // Correct Answer
+                    switch (sequence[sequencePosition])
+                    {
+                        case (0):
+                            audio.PlayOneShot(C);
+                            break;
+                        case (1):
+                            audio.PlayOneShot(E);
+                            break;
+                        case (2):
+                            audio.PlayOneShot(G);
+                            break;
+                        case (3):
+                            audio.PlayOneShot(C2);
+                            break;
+                    }
                     score += sequencePosition;
                     sequencePosition++;
                     Debug.Log("Correct " + sequencePosition + " " + other.gameObject.GetComponent<Ring>().checkpointNumber);
@@ -116,6 +137,7 @@ public class SystemController : MonoBehaviour {
                 }
                 else {
                     // Incorrect Answer
+                    audio.PlayOneShot(Buzz);
                     Debug.Log("Incorrect " + checkpointOffset + " " + sequencePosition + " " + other.gameObject.GetComponent<Ring>().checkpointNumber);
                     score--;
                     checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber + 1;
@@ -128,6 +150,7 @@ public class SystemController : MonoBehaviour {
                 other.gameObject.SetActive(false);
             }
             else {
+                audio.PlayOneShot(Buzz);
                 Debug.Log("Wrong checkpoint " + CurrentCheckpoint () + " " + other.gameObject.GetComponent<Ring>().checkpointNumber );
                 checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber + 1;
                 ShuffleList();
@@ -142,7 +165,25 @@ public class SystemController : MonoBehaviour {
 	void DisplaySequence () {
 		currentRingTimer += Time.deltaTime;
 		if (currentRingTimer > timePerRing) {
-			ringDisplayIndex++;
+			
+            if (ringDisplayIndex < sequenceLength) {
+                switch (sequence[ringDisplayIndex]) { 
+                    case(0):
+                        audio.PlayOneShot(C);
+                        break;
+                    case(1):
+                        audio.PlayOneShot(E);
+                        break;
+                    case(2):
+                        audio.PlayOneShot(G);
+                        break;
+                    case(3):
+                        audio.PlayOneShot(C2);
+                        break;
+                }
+            
+            }
+            ringDisplayIndex++;
 			currentRingTimer = 0.0f;
 		}
         if (ringDisplayIndex < sequenceLength )//&& timer > 5.0f)
