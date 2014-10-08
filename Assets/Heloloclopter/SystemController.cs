@@ -12,7 +12,11 @@ public class SystemController : MonoBehaviour {
 	public bool altimeterEnabled;
 	public bool speedEnabled;
     public bool displayingSequence;
-    
+
+    public GameObject red;
+    public GameObject yellow;
+    public GameObject green;
+    public GameObject blue;
 
 	float timer = 0.0f;
 	float speed = 0.0f;
@@ -43,12 +47,16 @@ public class SystemController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		sequenceLength = 1;
+        yellow.SetActive(false);
+        green.SetActive(false);
+        red.SetActive(false);
+        blue.SetActive(false);
+        sequenceLength = 1;
 		nextCheckpoint = 0;
         sequence = new List<int>();
         ShuffleList ();
         DisplaySequence ();
-		
+        
 	}
 	
 	// Update is called once per frame
@@ -68,24 +76,25 @@ public class SystemController : MonoBehaviour {
 
     void ShuffleList () {
         sequence.Clear();
+        sequenceLength = 1;
         System.Random rand = new System.Random ();
         for (int i = 0; i < maxLength; i++) {
-            sequence.Add(rand.Next (0, 4));
+            sequence.Add(i % 4);//rand.Next (0, 4));
             
         }
         Debug.Log(sequence[0]);
     } 
 
 	int CurrentCheckpoint () {
-        Debug.Log("FAGGOT: " + (checkpointOffset + sequencePosition) % numCheckpoints + " " + checkpointOffset + " " + sequencePosition + " " + numCheckpoints);
+        //Debug.Log("FAGGOT: " + (checkpointOffset + sequencePosition) % numCheckpoints + " " + checkpointOffset + " " + sequencePosition + " " + numCheckpoints);
 		return (checkpointOffset + sequencePosition)%numCheckpoints;
 	}
 
 	// Checkpoints
 	void OnTriggerEnter(Collider other) {
-        Debug.Log("Collision");
+        //Debug.Log("Collision");
 		if (other.gameObject.tag == "Torus") {
-            Debug.Log("Ahh, you need to give me a trigger warning");
+            //Debug.Log("Ahh, you need to give me a trigger warning");
             if (CurrentCheckpoint () == other.gameObject.GetComponent<Ring>().checkpointNumber) {
                 if (sequence[sequencePosition] == other.gameObject.GetComponent<Ring>().ringNumber) {
                     // Correct Answer
@@ -106,7 +115,9 @@ public class SystemController : MonoBehaviour {
                     // Incorrect Answer
                     Debug.Log("Incorrect");
                     score--;
-
+                    checkpointOffset++;
+                    sequencePosition = 0;
+                    ShuffleList();
                     if (currentCheckpoint > 0) {
                         currentCheckpoint = 0;
                     }
@@ -114,7 +125,7 @@ public class SystemController : MonoBehaviour {
                 other.gameObject.SetActive(false);
             }
             else {
-                Debug.Log("Wrong checkpoint" + CurrentCheckpoint () + " " + other.gameObject.GetComponent<Ring>().checkpointNumber );
+                Debug.Log("Wrong checkpoint " + CurrentCheckpoint () + " " + other.gameObject.GetComponent<Ring>().checkpointNumber );
                 checkpointOffset = other.gameObject.GetComponent<Ring>().checkpointNumber;
                 ShuffleList();
                 sequencePosition = 0;
@@ -131,7 +142,37 @@ public class SystemController : MonoBehaviour {
 			ringDisplayIndex++;
 			currentRingTimer = 0.0f;
 		}
-        if (ringDisplayIndex < sequence.Count) 	sequenceText.text = "" + sequence[ringDisplayIndex];
+        if (ringDisplayIndex < sequenceLength) { 
+            switch (sequence[ringDisplayIndex]){
+
+                case(0):
+                    yellow.SetActive(true);
+                    green.SetActive(false);
+                    red.SetActive(false);
+                    blue.SetActive(false);
+                    break;
+                case(1):
+                    yellow.SetActive(false);
+                    green.SetActive(true);
+                    red.SetActive(false);
+                    blue.SetActive(false);
+                    break;
+                case(2):
+                    yellow.SetActive(false);
+                    green.SetActive(false);
+                    red.SetActive(false);
+                    blue.SetActive(true);
+                    break;
+                case(3):
+                    yellow.SetActive(false);
+                    green.SetActive(false);
+                    red.SetActive(true);
+                    blue.SetActive(false);
+                    break;
+            }
+
+                
+        } //sequenceText.text = "" + sequence[ringDisplayIndex];
 	}
 
 	void DisplayTime () {
