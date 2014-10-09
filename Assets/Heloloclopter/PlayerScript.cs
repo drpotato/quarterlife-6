@@ -40,7 +40,10 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void Update() {
-	}
+        if(Input.GetKeyDown(KeyCode.Escape) == true) {
+            Application.Quit();
+        }
+    }
 	
 	void FixedUpdate() {
 		Vector3 pitchChange = new Vector3 ((pitchH*lift + 0.1f)/maxLift, 0.0f, 0.0f);
