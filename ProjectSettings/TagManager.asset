@@ -5,6 +5,10 @@ TagManager:
   tags:
   - Cube
   - Torus
+  - Start_Button
+  - Mode_Button
+  - Exit_Button
+  - 
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

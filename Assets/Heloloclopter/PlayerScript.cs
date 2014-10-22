@@ -41,7 +41,12 @@ public class PlayerScript : MonoBehaviour {
 	
 	void Update() {
         if(Input.GetKeyDown(KeyCode.Escape) == true) {
-            Application.Quit();
+            Application.LoadLevel("Menu");
+        }
+
+        if (Input.GetKeyDown("joystick button 1"))
+        {
+            Application.LoadLevel("Menu");
         }
     }
 	
@@ -60,7 +65,7 @@ public class PlayerScript : MonoBehaviour {
 		if (bikeController.GetComponent<BikeController>().bikePresent) {
 			lift = bikeController.GetComponent<BikeController>().speed*20;
 		} else {
-//			lift = ((Input.GetAxis ("Lift") + 1)/2)*maxLift;
+			lift = ((Input.GetAxis ("Lift") + 1)/2)*maxLift;
 
 			if (Input.GetKey (KeyCode.W)) {
 				lift += 0.05f;
@@ -127,7 +132,7 @@ public class PlayerScript : MonoBehaviour {
             } else {
                 lastRing = true;
             }
-			other.gameObject.SetActive (false);
+			other.gameObject.SetActive(false);
             Debug.Log(other.transform.parent);
             other.transform.parent.transform.parent.gameObject.SetActive(false);
             last = other;
