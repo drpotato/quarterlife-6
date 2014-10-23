@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
   - enabled: 1
-    path: Assets/Scenes/Large Rings Course.unity
+    path: Assets/Scenes/Regular.unity
   - enabled: 1
-    path: Assets/Scenes/Cognitive Rings Course.unity
+    path: Assets/Scenes/Cognitive.unity
