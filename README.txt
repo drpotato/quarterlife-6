@@ -1,6 +1,6 @@
-==========
-Flying Fit
-==========
+============
+ Flying Fit
+============
 
 Team HELI Members:
 ==================
@@ -10,21 +10,21 @@ Team HELI Members:
  * Chris Pearce - https://github.com/cjpearce - Master Terraformer
  * Jonathan Curtin - https://github.com/denseNinja - Supreme Supervisor of Stuff
 
-=================
-Building the game
-=================
+===================
+ Building the game
+===================
 
 Please ensure that when you build, the three scenes are all included in the order:
 Menu - Scene 0
 Regular - Scene 1
 Cognitive - Scene 2
 
-=============
-Contributions
-=============
+===============
+ Contributions
+===============
 
 For the record, we would like to state that the number and size of commits did not
-always reflect who did what in our projects. Almost all of these contributions were 
+always reflect who did what in our project. Almost all of these contributions were 
 collaborative to some degree. Also some contributions did not make the final prototype.
 
 Basically we think that we all did approximately equal amounts of work.
@@ -60,7 +60,7 @@ Christopher Morgan:
 - Cycle integration 
 - Reset function (for when the helicopter flips over)
 - Helicopter controls
-- A lot of stuff we scrapped.
+- Some scenes we scrapped.
 
 
 
